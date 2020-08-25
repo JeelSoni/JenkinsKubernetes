@@ -12,7 +12,6 @@ pipeline {
 			steps {
 				withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'dockerhub', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD']]){
 					sh '''
-						kubectl delete bluegreenlb
 						docker build -t jeel8599/capstone .
 					'''
 				}
@@ -34,6 +33,7 @@ pipeline {
 			steps {
 				withAWS(region:'us-east-1', credentials:'ecr_credentials') {
 					sh '''
+						kubectl delete bluegreenlb
 						kubectl config use-context arn:aws:eks:us-east-1:632781729537:cluster/capstonecluster
 					'''
 				}
