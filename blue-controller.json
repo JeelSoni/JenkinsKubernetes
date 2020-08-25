@@ -19,11 +19,12 @@
             }
          },
          "spec":{
+            "terminationGracePeriodSeconds": 30,
             "containers":[
                {
                   "name":"blue",
                   "image":"jeel8599/capstone:latest",
-                   "imagePullPolicy": "Always",
+                  "imagePullPolicy": "Always",
                   "ports":[
                      {
                         "name":"http-server",
