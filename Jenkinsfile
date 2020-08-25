@@ -12,6 +12,10 @@ pipeline {
 			steps {
 				withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'dockerhub', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD']]){
 					sh '''
+						docker stop green
+						docker stop blue
+						docker rm green
+						docker rm blue
 						docker build -t jeel8599/capstone .
 					'''
 				}
