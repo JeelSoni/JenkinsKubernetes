@@ -33,7 +33,7 @@ pipeline {
 			steps {
 				withAWS(region:'us-east-1', credentials:'ecr_credentials') {
 					sh '''
-						kubectl delete all
+						kubectl delete all --all
 						kubectl config use-context arn:aws:eks:us-east-1:632781729537:cluster/capstonecluster
 					'''
 				}
