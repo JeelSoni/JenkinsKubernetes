@@ -35,7 +35,7 @@ pipeline {
 					sh '''
 						POD=$(kubectl get pods -o=name | grep blue)
 						echo POD
-						kubectl delete --all pods
+						kubectl delete pod $POD
 						kubectl config use-context arn:aws:eks:us-east-1:632781729537:cluster/capstonecluster
 					'''
 				}
