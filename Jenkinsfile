@@ -33,6 +33,8 @@ pipeline {
 			steps {
 				withAWS(region:'us-east-1', credentials:'ecr_credentials') {
 					sh '''
+						POD=$(kubectl get pod -l app=bue -o jsonpath="{.items[0].metadata.name}")
+						echo POD
 						kubectl delete --all pods
 						kubectl config use-context arn:aws:eks:us-east-1:632781729537:cluster/capstonecluster
 					'''
